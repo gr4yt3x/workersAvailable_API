@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="text-align: center;">
+<h1>Workers Availables:</h1> 
+
+<ul id="list" style="list-style: none; font-size: 35px;" >
+</ul>
+
+
+</body>
+
+<script>
+    
+    let request = new XMLHttpRequest();
+    request.open("GET","/workers/available", false);
+    request.send();
+
+    let json = JSON.parse(request.responseText);
+
+    
+    for(let i = 0; i < json.length; i++){
+      var current_worker = document.createElement("li");
+      current_worker.innerHTML = json[i].name;
+      document.getElementById("list").appendChild(current_worker);
+  }
+
+  
+</script>
+</html>
